@@ -261,6 +261,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
         type: 3}
+      propertyPath: playerInfluence.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
+        type: 3}
       propertyPath: controls.Array.data[0]
       value: j
       objectReference: {fileID: 0}
@@ -318,6 +323,31 @@ PrefabInstance:
         type: 3}
       propertyPath: forwardVelocity
       value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
+        type: 3}
+      propertyPath: controls.Array.data[4]
+      value: o
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
+        type: 3}
+      propertyPath: controls.Array.data[5]
+      value: u
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
+        type: 3}
+      propertyPath: playerInfluence.Array.data[4]
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
+        type: 3}
+      propertyPath: playerInfluence.Array.data[5]
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
+        type: 3}
+      propertyPath: rotSpeed
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3487185124078746407, guid: 0004a408117857d4f95934aaf809b869,
         type: 3}
@@ -849,28 +879,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
         type: 3}
-      propertyPath: turningSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
-        type: 3}
-      propertyPath: playerInfluence.Array.data[0]
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
-        type: 3}
-      propertyPath: playerInfluence.Array.data[1]
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
-        type: 3}
-      propertyPath: playerInfluence.Array.data[2]
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
-        type: 3}
-      propertyPath: playerInfluence.Array.data[3]
-      value: 0.25
+      propertyPath: playerInfluence.Array.size
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
         type: 3}
@@ -884,18 +894,28 @@ PrefabInstance:
       objectReference: {fileID: 1998325348}
     - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
         type: 3}
-      propertyPath: forwardVelocity
-      value: 60
+      propertyPath: controls.Array.data[4]
+      value: e
       objectReference: {fileID: 0}
-    - target: {fileID: 3487185124078746407, guid: 0004a408117857d4f95934aaf809b869,
+    - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
         type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
+      propertyPath: controls.Array.data[5]
+      value: q
       objectReference: {fileID: 0}
-    - target: {fileID: 3487185124078746407, guid: 0004a408117857d4f95934aaf809b869,
+    - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
         type: 3}
-      propertyPath: m_Constraints
-      value: 112
+      propertyPath: playerInfluence.Array.data[4]
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
+        type: 3}
+      propertyPath: playerInfluence.Array.data[5]
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
+        type: 3}
+      propertyPath: rotSpeed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0004a408117857d4f95934aaf809b869, type: 3}

@@ -4,31 +4,38 @@ using UnityEngine;
 
 public class Controls : MonoBehaviour
 {
-    public string[] controls = new string[4];
+    public string[] controls = new string[6];
 
     //Velocity
     private Rigidbody _rigidBody;
     private Vector3 _newVelocity;
+    private Vector3 _newRot;
     public float forwardVelocity = 10;
     private float _augmentedForwardVelocity;
     private bool _speedChange;
     public float turningSpeed;
+    public float rotSpeed;
 
     //Enemy Influence Variables.
     public GameObject enemy;
-    public float[] playerInfluence = new float[4];
+    public float[] playerInfluence = new float[6];
     private Controls _otherEnemyInfluence;
     public Vector3 thisEnemyInfluence;
+    public Vector3 thisEnemyCamInfluence;
 
     //Controls Variables
     private float currentLerpTime1;
     private float currentLerpTime2;
     private float currentLerpTime3;
     private float currentLerpTime4;
+    private float currentLerpTime5;
+    private float currentLerpTime6;
     private float lerpTime1 = 1f;
     private float lerpTime2 = 1f;
     private float lerpTime3 = 1f;
     private float lerpTime4 = 1f;
+    private float lerpTime5 = 1f;
+    private float lerpTime6 = 1f;
 
     //Camera
     public Camera cammie;
@@ -51,6 +58,9 @@ public class Controls : MonoBehaviour
         MinusX();
         PlusY();
         MinusY();
+
+        RotLeft();
+        RotRight();
         //speed update
         UpdateSpeed();
 
@@ -174,6 +184,66 @@ public class Controls : MonoBehaviour
         }
         else if (currentLerpTime3 < 0) currentLerpTime3 = 0;
     }
+
+    private void RotLeft()
+    {
+        float perc = currentLerpTime5 / lerpTime5;
+
+        if (currentLerpTime5 > lerpTime5)
+        {
+            currentLerpTime5 = lerpTime5;
+        }
+
+        if (Input.GetKeyDown(controls[5]))
+        {
+            currentLerpTime5 = 0f;
+        }
+
+        if (Input.GetKey(controls[5]))
+        {
+            currentLerpTime5 += Time.deltaTime;
+            _newRot.z = Mathf.Lerp(_newRot.z, -rotSpeed, perc);
+        }
+        else if (currentLerpTime5 > 0)
+        {
+            currentLerpTime5 -= Time.deltaTime;
+            currentLerpTime6 = -currentLerpTime5;
+            if (perc < 0.05f) perc = 0;
+            _newRot.z = Mathf.Lerp(_newRot.z, -rotSpeed, perc);
+        }
+        else if (currentLerpTime5 < 0) currentLerpTime5 = 0;
+    }
+
+    private void RotRight()
+    {
+        float perc = currentLerpTime6 / lerpTime6;
+
+        if (currentLerpTime6 > lerpTime6)
+        {
+            currentLerpTime6 = lerpTime6;
+        }
+
+        if (Input.GetKeyDown(controls[4]))
+        {
+            currentLerpTime5 = 0f;
+        }
+
+        if (Input.GetKey(controls[4]))
+        {
+            currentLerpTime6 += Time.deltaTime;
+            _newRot.z = Mathf.Lerp(_newRot.z, rotSpeed, perc);
+        }
+        else if (currentLerpTime6 > 0)
+        {
+            currentLerpTime6 -= Time.deltaTime;
+            currentLerpTime5 = -currentLerpTime6;
+            if (perc < 0.05f) perc = 0;
+            _newRot.z = Mathf.Lerp(_newRot.z, rotSpeed, perc);
+        }
+        else if (currentLerpTime6 < 0) currentLerpTime6 = 0;
+    }
+
+
     #endregion
 
     private void UpdateSpeed()
@@ -215,5 +285,14 @@ public class Controls : MonoBehaviour
     {
         cammie.fieldOfView = Mathf.Lerp(60,120, (_newVelocity.z / forwardVelocity));
         camPos.transform.localPosition = Vector3.Lerp(new Vector3(0,1.5f,-10), new Vector3(0,1.5f,-5), (_newVelocity.z/forwardVelocity));
+
+        _newRot += thisEnemyCamInfluence;
+        _otherEnemyInfluence.thisEnemyCamInfluence = new Vector3(0,0,_newRot.z * playerInfluence[5]);
+
+        cammie.transform.Rotate(Vector3.forward, _newRot.z * Time.deltaTime);
+        // _otherEnemyInfluence.thisEnemyInfluence = new Vector3(_newVelocity.x * playerInfluence[0], _newVelocity.y * playerInfluence[2], 0);
     }
+
+
+
 }
