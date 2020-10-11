@@ -213,7 +213,7 @@ public class Controls : MonoBehaviour
 
     private void CameraFOV()
     {
-        cammie.fieldOfView = Mathf.Lerp(20,60, (_newVelocity.z / forwardVelocity));
-        camPos.transform.localPosition = Vector3.Lerp(new Vector3(0,1.5f,-20), new Vector3(0,1.5f,-10), (_newVelocity.z/forwardVelocity));
+        cammie.fieldOfView = Mathf.Lerp(60,120, (_newVelocity.z / forwardVelocity));
+        camPos.transform.localPosition = Vector3.Lerp(new Vector3(0,1.5f,-10), new Vector3(0,1.5f,-5), (_newVelocity.z/forwardVelocity));
     }
 }
