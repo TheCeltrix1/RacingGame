@@ -917,6 +917,11 @@ PrefabInstance:
       propertyPath: rotSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 337800902795368627, guid: 0004a408117857d4f95934aaf809b869,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0004a408117857d4f95934aaf809b869, type: 3}
 --- !u!1001 &3728168830693525132
