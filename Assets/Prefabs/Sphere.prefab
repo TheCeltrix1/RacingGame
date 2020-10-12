@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 337800902795368627}
   - component: {fileID: 1599004629757132546}
   - component: {fileID: 3487185124078746407}
+  - component: {fileID: 7718785352648760716}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -220,6 +221,9 @@ MonoBehaviour:
   - e
   forwardVelocity: 60
   turningSpeed: 20
+  horizontalVelocity: 0
+  verticalVelocity: 0
+  rotSpeed: 0
   enemy: {fileID: 0}
   playerInfluence:
   - 0.25
@@ -227,6 +231,7 @@ MonoBehaviour:
   - 0.25
   - 0.25
   thisEnemyInfluence: {x: 0, y: 0, z: 0}
+  thisEnemyCamInfluence: {x: 0, y: 0, z: 0}
   cammie: {fileID: 0}
 --- !u!54 &3487185124078746407
 Rigidbody:
@@ -244,6 +249,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &7718785352648760716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337800902795368632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653cf8096533f5f49b7507ae21b7a308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathObject: {fileID: 4431383404612260854, guid: e3a16857153b0cc45825888f35d717d7,
+    type: 3}
 --- !u!1 &5142163431286720507
 GameObject:
   m_ObjectHideFlags: 0

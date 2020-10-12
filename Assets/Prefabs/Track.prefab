@@ -853,6 +853,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instance: {fileID: 9103016709896091167}
+  obstacle: {fileID: 8324469836275090038, guid: 0ef7df1467efa594396ba697a65f1083,
+    type: 3}
 --- !u!65 &8691901142478584135
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -933,6 +935,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1418718630863340669, guid: bb78c3143efa36c43bcbfb4010ddd4f2,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418718630863340658, guid: bb78c3143efa36c43bcbfb4010ddd4f2,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418718630863340658, guid: bb78c3143efa36c43bcbfb4010ddd4f2,
+        type: 3}
+      propertyPath: lengthInSec
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418718630863340658, guid: bb78c3143efa36c43bcbfb4010ddd4f2,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb78c3143efa36c43bcbfb4010ddd4f2, type: 3}
 --- !u!4 &3728168831625725211 stripped
@@ -966,7 +988,7 @@ PrefabInstance:
     - target: {fileID: 1418718630863340668, guid: bb78c3143efa36c43bcbfb4010ddd4f2,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 209.1
+      value: 413.4
       objectReference: {fileID: 0}
     - target: {fileID: 1418718630863340668, guid: bb78c3143efa36c43bcbfb4010ddd4f2,
         type: 3}
@@ -1007,6 +1029,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418718630863340669, guid: bb78c3143efa36c43bcbfb4010ddd4f2,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418718630863340658, guid: bb78c3143efa36c43bcbfb4010ddd4f2,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418718630863340658, guid: bb78c3143efa36c43bcbfb4010ddd4f2,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb78c3143efa36c43bcbfb4010ddd4f2, type: 3}
