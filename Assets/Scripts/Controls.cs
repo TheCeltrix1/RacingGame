@@ -49,6 +49,7 @@ public class Controls : MonoBehaviour
 
 
     public Particle particle;
+    public bool deleteThis;
 
     void Start()
     {
@@ -75,14 +76,12 @@ public class Controls : MonoBehaviour
         PlusY();
         MinusY();
 
-        //RotLeft();
-        //RotRight();
-
         //speed update
         UpdateSpeed();
 
         CameraFOV();
-        _rigidBody.velocity = _newVelocity;
+
+        if(StartController.begin) _rigidBody.velocity = _newVelocity;
     }
 
 
@@ -223,11 +222,14 @@ public class Controls : MonoBehaviour
 
     private void UpdateSpeed()
     {
-        _newVelocity.z += forwardVelocity;
-        _newVelocity = cammie.transform.rotation * _newVelocity;
-        _newVelocity += thisEnemyInfluence;
-        _otherEnemyInfluence.thisEnemyInfluence = new Vector3(_newVelocity.x * playerInfluence[0], _newVelocity.y * playerInfluence[2], 0);
-        _newVelocity.z += _augmentedForwardVelocity;
+        if (StartController.begin)
+        {
+            _newVelocity.z += forwardVelocity;
+            _newVelocity = cammie.transform.rotation * _newVelocity;
+            _newVelocity += thisEnemyInfluence;
+            _otherEnemyInfluence.thisEnemyInfluence = new Vector3(_newVelocity.x * playerInfluence[0], _newVelocity.y * playerInfluence[2], 0);
+            _newVelocity.z += _augmentedForwardVelocity;
+        }
     }
 
     #region Triggers
@@ -262,26 +264,31 @@ public class Controls : MonoBehaviour
         cammie.fieldOfView = Mathf.Lerp(60,120, (_newVelocity.z / forwardVelocity));
         camPos.transform.localPosition = Vector3.Lerp(new Vector3(0,1.5f,-10), new Vector3(0,1.5f,-5), /*(_newVelocity.z/forwardVelocity)*/0.25f);
 
-        if (Input.GetKey(controls[5]))
-        {
-            _newRot.z = -1;
-        }
-        else if (Input.GetKey(controls[4]))
-        {
-            _newRot.z = 1;
-        }
-        else _newRot.z = 0;
 
-        if (Input.GetKey(_otherEnemyInfluence.controls[5]))
+        if (StartController.begin)
         {
-            _newRot.z += -_otherEnemyInfluence.playerInfluence[5];
-        }
-        else if (Input.GetKey(_otherEnemyInfluence.controls[4]))
-        {
-            _newRot.z += _otherEnemyInfluence.playerInfluence[5];
-        }
 
-        this.transform.Rotate(Vector3.forward, _newRot.z);
+            if (Input.GetKey(controls[5]))
+            {
+                _newRot.z = -1;
+            }
+            else if (Input.GetKey(controls[4]))
+            {
+                _newRot.z = 1;
+            }
+            else _newRot.z = 0;
+
+            if (Input.GetKey(_otherEnemyInfluence.controls[5]))
+            {
+                _newRot.z += -_otherEnemyInfluence.playerInfluence[5];
+            }
+            else if (Input.GetKey(_otherEnemyInfluence.controls[4]))
+            {
+                _newRot.z += _otherEnemyInfluence.playerInfluence[5];
+            }
+
+            this.transform.Rotate(Vector3.forward, _newRot.z);
+        }
 
     }
 

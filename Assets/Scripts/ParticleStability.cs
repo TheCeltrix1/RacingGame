@@ -11,7 +11,7 @@ public class ParticleStability : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_stability);
+        //Debug.Log(_stability);
         if (_stability <= 0)
         {
             Instantiate(deathObject, this.transform.position,this.transform.rotation);
