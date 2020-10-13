@@ -30,7 +30,7 @@ public class InfinteTrack : MonoBehaviour
     {
         _bounds = this.transform.GetChild(0).GetChild(0).GetComponent<Renderer>().bounds.size;
         //nya nya object pooling not arsed rn.
-        for (int i = 0; i < obstacles; i ++)
+        for (int i = 0; i < obstacles; i++)
         {
             Instantiate(obstacle, new Vector3(Random.Range(_bounds.x, -_bounds.x), Random.Range(_bounds.x, -_bounds.x), this.transform.position.z + (_obstacleSpawnDistance * obstacles)), this.transform.rotation);
             obstacles--;

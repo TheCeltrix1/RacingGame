@@ -7,6 +7,8 @@ public class ParticleStability : MonoBehaviour
     public GameObject deathObject;
     private float _stability = 100;
 
+    public Particle[] partciles;
+
     private void Update()
     {
         Debug.Log(_stability);
@@ -21,11 +23,18 @@ public class ParticleStability : MonoBehaviour
     {        
         if (collision.gameObject.tag == "Particle")
         {
-            _stability -= 100 * Time.deltaTime;
+            _stability -= 10 * Time.deltaTime;
         }
         else if (!collision.gameObject.GetComponent<Controls>())
         {
-            _stability -= 33 * Time.deltaTime;
+            _stability -= 3 * Time.deltaTime;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+
+        gameObject.GetComponent<Controls>().particle = partciles[Random.Range(0, 4)];
+
     }
 }

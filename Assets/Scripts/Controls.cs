@@ -47,12 +47,17 @@ public class Controls : MonoBehaviour
     public Camera cammie;
     private GameObject camPos;
 
+
+    public Particle particle;
+
     void Start()
     {
         camPos = this.transform.GetChild(0).gameObject;
         _augmentedForwardVelocity = 0;
         _otherEnemyInfluence = enemy.GetComponent<Controls>();
         _rigidBody = this.GetComponent<Rigidbody>();
+
+        SetStats();
     }
 
     // Update is called once per frame
@@ -79,6 +84,23 @@ public class Controls : MonoBehaviour
         CameraFOV();
         _rigidBody.velocity = _newVelocity;
     }
+
+
+    void SetStats()
+    {
+        int reverse = 1;
+        if (particle.invert) reverse = -1;
+
+        playerInfluence[0] = particle.cardinalStrength * reverse;
+        playerInfluence[1] = particle.cardinalStrength * reverse;
+        playerInfluence[2] = particle.cardinalStrength * reverse;
+        playerInfluence[3] = particle.cardinalStrength * reverse;
+        playerInfluence[4] = particle.rotStrength * reverse;
+        playerInfluence[5] = particle.rotStrength * reverse;
+    }
+
+
+
 
     #region movement
     private void PlusX()
@@ -197,65 +219,6 @@ public class Controls : MonoBehaviour
         else if (currentLerpTime3 < 0) currentLerpTime3 = 0;
     }
 
-    //private void RotLeft()
-    //{
-    //    float perc = currentLerpTime5 / lerpTime5;
-
-    //    if (currentLerpTime5 > lerpTime5)
-    //    {
-    //        currentLerpTime5 = lerpTime5;
-    //    }
-
-    //    if (Input.GetKeyDown(controls[5]))
-    //    {
-    //        currentLerpTime5 = 0f;
-    //    }
-
-    //    if (Input.GetKey(controls[5]))
-    //    {
-    //        currentLerpTime5 += Time.deltaTime;
-    //        _newRot.z = Mathf.Lerp(_newRot.z, -rotSpeed, perc);
-    //    }
-    //    else if (currentLerpTime5 > 0)
-    //    {
-    //        currentLerpTime5 -= Time.deltaTime;
-    //        currentLerpTime6 = -currentLerpTime5;
-    //        if (perc < 0.05f) perc = 0;
-    //        _newRot.z = Mathf.Lerp(_newRot.z, -rotSpeed, perc);
-    //    }
-    //    else if (currentLerpTime5 < 0) currentLerpTime5 = 0;
-    //}
-
-    //private void RotRight()
-    //{
-    //    float perc = currentLerpTime6 / lerpTime6;
-
-    //    if (currentLerpTime6 > lerpTime6)
-    //    {
-    //        currentLerpTime6 = lerpTime6;
-    //    }
-
-    //    if (Input.GetKeyDown(controls[4]))
-    //    {
-    //        currentLerpTime5 = 0f;
-    //    }
-
-    //    if (Input.GetKey(controls[4]))
-    //    {
-    //        currentLerpTime6 += Time.deltaTime;
-    //        _newRot.z = Mathf.Lerp(_newRot.z, rotSpeed, perc);
-    //    }
-    //    else if (currentLerpTime6 > 0)
-    //    {
-    //        currentLerpTime6 -= Time.deltaTime;
-    //        currentLerpTime5 = -currentLerpTime6;
-    //        if (perc < 0.05f) perc = 0;
-    //        _newRot.z = Mathf.Lerp(_newRot.z, rotSpeed, perc);
-    //    }
-    //    else if (currentLerpTime6 < 0) currentLerpTime6 = 0;
-    //}
-
-
     #endregion
 
     private void UpdateSpeed()
@@ -299,13 +262,6 @@ public class Controls : MonoBehaviour
         cammie.fieldOfView = Mathf.Lerp(60,120, (_newVelocity.z / forwardVelocity));
         camPos.transform.localPosition = Vector3.Lerp(new Vector3(0,1.5f,-10), new Vector3(0,1.5f,-5), /*(_newVelocity.z/forwardVelocity)*/0.25f);
 
-        //_newRot += thisEnemyCamInfluence;
-        //_otherEnemyInfluence.thisEnemyCamInfluence = new Vector3(0,0,_newRot.z * playerInfluence[5]);
-
-        //cammie.transform.Rotate(Vector3.forward, _newRot.z * Time.deltaTime);
-        // _otherEnemyInfluence.thisEnemyInfluence = new Vector3(_newVelocity.x * playerInfluence[0], _newVelocity.y * playerInfluence[2], 0);
-
-
         if (Input.GetKey(controls[5]))
         {
             _newRot.z = -1;
@@ -318,11 +274,11 @@ public class Controls : MonoBehaviour
 
         if (Input.GetKey(_otherEnemyInfluence.controls[5]))
         {
-            _newRot.z += -0.25f;
+            _newRot.z += -_otherEnemyInfluence.playerInfluence[5];
         }
         else if (Input.GetKey(_otherEnemyInfluence.controls[4]))
         {
-            _newRot.z += 0.25f;
+            _newRot.z += _otherEnemyInfluence.playerInfluence[5];
         }
 
         this.transform.Rotate(Vector3.forward, _newRot.z);
