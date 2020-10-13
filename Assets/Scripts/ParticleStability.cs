@@ -5,16 +5,17 @@ using UnityEngine;
 public class ParticleStability : MonoBehaviour
 {
     public GameObject deathObject;
+    public GameObject endScreen;
     private float _stability = 100;
 
     public Particle[] partciles;
 
     private void Update()
     {
-        Debug.Log(_stability);
         if (_stability <= 0)
         {
             Instantiate(deathObject, this.transform.position,this.transform.rotation);
+            endScreen.GetComponent<Scores>().GameOver();
             Destroy(this.gameObject);
         }
     }
@@ -23,11 +24,11 @@ public class ParticleStability : MonoBehaviour
     {        
         if (collision.gameObject.tag == "Particle")
         {
-            _stability -= 10 * Time.deltaTime;
+            _stability -= 100 * Time.deltaTime;
         }
         else if (!collision.gameObject.GetComponent<Controls>())
         {
-            _stability -= 3 * Time.deltaTime;
+            _stability -= 50 * Time.deltaTime;
         }
     }
 

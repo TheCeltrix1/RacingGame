@@ -47,7 +47,7 @@ public class Controls : MonoBehaviour
     public Camera cammie;
     private GameObject camPos;
 
-
+    public float score;
     public Particle particle;
 
     void Start()
@@ -85,7 +85,6 @@ public class Controls : MonoBehaviour
         _rigidBody.velocity = _newVelocity;
     }
 
-
     void SetStats()
     {
         int reverse = 1;
@@ -98,9 +97,6 @@ public class Controls : MonoBehaviour
         playerInfluence[4] = particle.rotStrength * reverse;
         playerInfluence[5] = particle.rotStrength * reverse;
     }
-
-
-
 
     #region movement
     private void PlusX()
@@ -207,14 +203,14 @@ public class Controls : MonoBehaviour
         if (Input.GetKey(controls[2]))
         {
             currentLerpTime3 += Time.deltaTime;
-            _newVelocity.y += /*_horizontalAxis */ Mathf.Lerp(_newVelocity.y, turningSpeed, perc);
+            _newVelocity.y += Mathf.Lerp(_newVelocity.y, turningSpeed, perc);
         }
         else if (currentLerpTime3 > 0)
         {
             currentLerpTime3 -= Time.deltaTime;
             currentLerpTime4 = -currentLerpTime3;
             if (perc < 0.05f) perc = 0;
-            _newVelocity.y += /*_horizontalAxis */ Mathf.Lerp(_newVelocity.y, turningSpeed, perc);
+            _newVelocity.y += Mathf.Lerp(_newVelocity.y, turningSpeed, perc);
         }
         else if (currentLerpTime3 < 0) currentLerpTime3 = 0;
     }
@@ -226,7 +222,30 @@ public class Controls : MonoBehaviour
         _newVelocity.z += forwardVelocity;
         _newVelocity = cammie.transform.rotation * _newVelocity;
         _newVelocity += thisEnemyInfluence;
-        _otherEnemyInfluence.thisEnemyInfluence = new Vector3(_newVelocity.x * playerInfluence[0], _newVelocity.y * playerInfluence[2], 0);
+
+        Vector3 influence = new Vector3(0,0,0);
+        //Other Enemy Influence
+        if (_newVelocity.x > 0.1f)
+        {
+            influence += new Vector3(_newVelocity.x * playerInfluence[0], 0, 0);
+        }
+        else if (_newVelocity.x < -0.1f)
+        {
+            influence += new Vector3(_newVelocity.x * playerInfluence[1], 0, 0);
+        }
+
+        if (_newVelocity.y > 0.1f)
+        {
+            influence += new Vector3(0, _newVelocity.y * playerInfluence[2], 0);
+        }
+        else if (_newVelocity.y < -0.1f)
+        {
+            influence += new Vector3(0, _newVelocity.y * playerInfluence[3], 0);
+        }
+        _otherEnemyInfluence.thisEnemyInfluence = influence;
+
+        score += Mathf.Abs(_newVelocity.x);
+        score += Mathf.Abs(_newVelocity.y);
         _newVelocity.z += _augmentedForwardVelocity;
     }
 
@@ -284,7 +303,5 @@ public class Controls : MonoBehaviour
         this.transform.Rotate(Vector3.forward, _newRot.z);
 
     }
-
-
 
 }
