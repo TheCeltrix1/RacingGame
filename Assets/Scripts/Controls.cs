@@ -36,6 +36,10 @@ public class Controls : MonoBehaviour
     private float currentLerpTime4;
     private float currentLerpTime5;
     private float currentLerpTime6;
+    private float perc1;
+    private float perc2;
+    private float perc3;
+    private float perc4;
     private float lerpTime1 = 1f;
     private float lerpTime2 = 1f;
     private float lerpTime3 = 1f;
@@ -71,8 +75,9 @@ public class Controls : MonoBehaviour
 
         _newVelocity = new Vector3(0,0,0);
         //movement
-        PlusX();
+        Drift();
         MinusX();
+        PlusX();
         PlusY();
         MinusY();
 
@@ -98,9 +103,42 @@ public class Controls : MonoBehaviour
     }
 
     #region movement
+    private void Drift()
+    {
+        if (!Input.GetKey(controls[0]) && currentLerpTime1 > 0)
+        {
+            currentLerpTime1 -= Time.deltaTime;
+            currentLerpTime2 = -currentLerpTime1;
+            if (perc1 < 0.05f) perc1 = 0;
+            _newVelocity.x = Mathf.Lerp(_newVelocity.x, -turningSpeed, perc1);
+        }
+
+        if (!Input.GetKey(controls[1]) && currentLerpTime2 > 0)
+        {
+            currentLerpTime2 -= Time.deltaTime;
+            currentLerpTime1 = -currentLerpTime2;
+            if (perc2 < 0.05f) perc2 = 0;
+            _newVelocity.x = Mathf.Lerp(_newVelocity.x, turningSpeed, perc2);
+        }
+        if (!Input.GetKey(controls[2]) && currentLerpTime3 > 0)
+        {
+            currentLerpTime3 -= Time.deltaTime;
+            currentLerpTime4 = -currentLerpTime3;
+            if (perc4 < 0.05f) perc4 = 0;
+            _newVelocity.y += Mathf.Lerp(_newVelocity.y, turningSpeed, perc4);
+        }
+        if (!Input.GetKey(controls[3]) && currentLerpTime4 > 0)
+        {
+            currentLerpTime4 -= Time.deltaTime;
+            currentLerpTime3 = -currentLerpTime4;
+            if (perc3 < 0.05f) perc3 = 0;
+            _newVelocity.y += Mathf.Lerp(_newVelocity.y, -turningSpeed, perc3);
+        }
+    }
+
     private void PlusX()
     {
-        float perc = currentLerpTime1 / lerpTime1;
+        perc1 = currentLerpTime1 / lerpTime1;
 
         if (currentLerpTime1 > lerpTime1)
         {
@@ -115,21 +153,13 @@ public class Controls : MonoBehaviour
         if (Input.GetKey(controls[0]))
         {
             currentLerpTime1 += Time.deltaTime;
-            _newVelocity.x += Mathf.Lerp(_newVelocity.x, -turningSpeed, perc);
+            _newVelocity.x = Mathf.Lerp(_newVelocity.x, -turningSpeed, perc1);
         }
-        else if (currentLerpTime1 > 0)
-        {
-            currentLerpTime1 -= Time.deltaTime;
-            currentLerpTime2 = -currentLerpTime1;
-            if (perc < 0.05f) perc = 0;
-            _newVelocity.x += Mathf.Lerp(_newVelocity.x, -turningSpeed, perc);
-        }
-        else if (currentLerpTime1 < 0) currentLerpTime1 = 0;
     }
 
     private void MinusX()
     {
-        float perc = currentLerpTime2 / lerpTime2;
+        perc2 = currentLerpTime2 / lerpTime2;
 
         if (currentLerpTime2 > lerpTime2)
         {
@@ -144,21 +174,13 @@ public class Controls : MonoBehaviour
         if (Input.GetKey(controls[1]))
         {
             currentLerpTime2 += Time.deltaTime;
-            _newVelocity.x += Mathf.Lerp(_newVelocity.x, turningSpeed, perc);
+            _newVelocity.x = Mathf.Lerp(_newVelocity.x, turningSpeed, perc2);
         }
-        else if (currentLerpTime2 > 0)
-        {
-            currentLerpTime2 -= Time.deltaTime;
-            currentLerpTime1 = -currentLerpTime2;
-            if (perc < 0.05f) perc = 0;
-            _newVelocity.x += Mathf.Lerp(_newVelocity.x, turningSpeed, perc);
-        }
-        else if (currentLerpTime2 < 0) currentLerpTime2 = 0;
     }
 
     private void PlusY()
     {
-        float perc = currentLerpTime4 / lerpTime4;
+        perc3 = currentLerpTime4 / lerpTime4;
 
         if (currentLerpTime4 > lerpTime4)
         {
@@ -173,21 +195,13 @@ public class Controls : MonoBehaviour
         if (Input.GetKey(controls[3]))
         {
             currentLerpTime4 += Time.deltaTime;
-            _newVelocity.y += Mathf.Lerp(_newVelocity.y, -turningSpeed, perc);
+            _newVelocity.y = Mathf.Lerp(_newVelocity.y, -turningSpeed, perc3);
         }
-        else if (currentLerpTime4 > 0)
-        {
-            currentLerpTime4 -= Time.deltaTime;
-            currentLerpTime3 = -currentLerpTime4;
-            if (perc < 0.05f) perc = 0;
-            _newVelocity.y += Mathf.Lerp(_newVelocity.y, -turningSpeed, perc);
-        }
-        else if (currentLerpTime4 < 0) currentLerpTime4 = 0;
     }
 
     private void MinusY()
     {
-        float perc = currentLerpTime3 / lerpTime3;
+        perc4 = currentLerpTime3 / lerpTime3;
 
         if (currentLerpTime3 > lerpTime3)
         {
@@ -202,16 +216,8 @@ public class Controls : MonoBehaviour
         if (Input.GetKey(controls[2]))
         {
             currentLerpTime3 += Time.deltaTime;
-            _newVelocity.y += Mathf.Lerp(_newVelocity.y, turningSpeed, perc);
+            _newVelocity.y = Mathf.Lerp(_newVelocity.y, turningSpeed, perc4);
         }
-        else if (currentLerpTime3 > 0)
-        {
-            currentLerpTime3 -= Time.deltaTime;
-            currentLerpTime4 = -currentLerpTime3;
-            if (perc < 0.05f) perc = 0;
-            _newVelocity.y += Mathf.Lerp(_newVelocity.y, turningSpeed, perc);
-        }
-        else if (currentLerpTime3 < 0) currentLerpTime3 = 0;
     }
 
     #endregion
