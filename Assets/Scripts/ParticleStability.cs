@@ -1,19 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ParticleStability : MonoBehaviour
 {
     public GameObject deathObject;
     public GameObject endScreen;
-    private float _stability = 100;
+    public  float _stability = 100;
 
     public Particle[] partciles;
 
+    public Image image;
+
     private void Update()
     {
+
+        image.fillAmount = _stability / 100;
+
+
+
+
         if (_stability <= 0)
         {
+            _stability = 0;
             Instantiate(deathObject, this.transform.position,this.transform.rotation);
             endScreen.GetComponent<Scores>().GameOver();
             Destroy(this.gameObject);
@@ -24,11 +34,11 @@ public class ParticleStability : MonoBehaviour
     {        
         if (collision.gameObject.tag == "Particle")
         {
-            _stability -= 100 * Time.deltaTime;
+            _stability -= 30 * Time.deltaTime;
         }
         else if (!collision.gameObject.GetComponent<Controls>())
         {
-            _stability -= 50 * Time.deltaTime;
+            _stability -= 15 * Time.deltaTime;
         }
     }
 

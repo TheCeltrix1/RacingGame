@@ -370,7 +370,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -979,7 +979,7 @@ PrefabInstance:
     - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
         type: 3}
       propertyPath: forwardVelocity
-      value: 60
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
         type: 3}
@@ -2156,6 +2156,11 @@ PrefabInstance:
         type: 3}
       propertyPath: turningSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1599004629757132546, guid: 0004a408117857d4f95934aaf809b869,
+        type: 3}
+      propertyPath: forwardVelocity
+      value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 337800902795368638, guid: 0004a408117857d4f95934aaf809b869,
         type: 3}

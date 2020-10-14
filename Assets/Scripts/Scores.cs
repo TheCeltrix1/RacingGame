@@ -40,8 +40,22 @@ public class Scores : MonoBehaviour
             endScreen[i].SetActive(true);
             i++;
         }
-        scores[0].GetComponent<Text>().text = "Score: " + (_timeSurvived + _player1TotalMovement);
-        scores[1].GetComponent<Text>().text = "Score: " + (_timeSurvived + _player2TotalMovement);
+
+
+        int stability1 = (int)Mathf.Round(player1.GetComponent<ParticleStability>()._stability);
+        int stability2 = (int)Mathf.Round(player2.GetComponent<ParticleStability>()._stability);
+
+
+        int score1 = (int)Mathf.Round(_timeSurvived + _player1TotalMovement);
+        score1 = score1 + score1 * stability1;
+        int score2 = (int)Mathf.Round(_timeSurvived + _player2TotalMovement);
+        score2 = score2 + score2 * stability2;
+
+        scores[0].GetComponent<Text>().text = "Score: " + score1;
+        scores[1].GetComponent<Text>().text = "Score: " + score2;
+        scores[0].transform.parent.GetComponent<Text>().text = "Stability = " + stability1 + "%";
+        scores[1].transform.parent.GetComponent<Text>().text = "Stability = " + stability2 + "%";
+
         Time.timeScale = 0;
     }
 }

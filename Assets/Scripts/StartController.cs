@@ -14,7 +14,8 @@ public class StartController : MonoBehaviour
 
     private void Update()
     {
-        if (time > 0)
+
+        if (time > 0 && !begin)
         {
             time -= Time.deltaTime;
             text.text = time.ToString("0");
@@ -22,7 +23,7 @@ public class StartController : MonoBehaviour
         else
         {
             begin = true;
-            gameObject.SetActive(false);
+            transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 
