@@ -839,7 +839,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 50, y: 50, z: 5}
+  m_Size: {x: 50, y: 50, z: 50}
   m_Center: {x: 0, y: 0, z: 10}
 --- !u!1001 &1098972480826905785
 PrefabInstance:
@@ -848,10 +848,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6095152361441291730}
     m_Modifications:
-    - target: {fileID: 100576, guid: d69a9478b7afcff4cb20f31606b3e6ae, type: 3}
-      propertyPath: m_Name
-      value: tube_rotation
-      objectReference: {fileID: 0}
     - target: {fileID: 400576, guid: d69a9478b7afcff4cb20f31606b3e6ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -907,6 +903,10 @@ PrefabInstance:
     - target: {fileID: 400576, guid: d69a9478b7afcff4cb20f31606b3e6ae, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100576, guid: d69a9478b7afcff4cb20f31606b3e6ae, type: 3}
+      propertyPath: m_Name
+      value: tube_rotation
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d69a9478b7afcff4cb20f31606b3e6ae, type: 3}
