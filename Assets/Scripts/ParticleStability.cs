@@ -44,7 +44,7 @@ public class ParticleStability : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
+        gameObject.GetComponent<AudioSource>().Play();
         gameObject.GetComponent<Controls>().particle = partciles[Random.Range(0, 4)];
 
     }
