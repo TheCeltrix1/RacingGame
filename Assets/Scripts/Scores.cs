@@ -47,9 +47,9 @@ public class Scores : MonoBehaviour
 
 
         int score1 = (int)Mathf.Round(_timeSurvived + _player1TotalMovement);
-        score1 = score1 + (score1 * stability1/100);
+        score1 = (int)Mathf.Round(0.01f * (score1 + (score1 * stability1/100)));
         int score2 = (int)Mathf.Round(_timeSurvived + _player2TotalMovement);
-        score2 = score2 + (score2 * stability2/100);
+        score2 = (int)Mathf.Round(0.01f *(score2 + (score2 * stability2/100)));
 
         scores[0].GetComponent<Text>().text = "Score: " + score1;
         scores[1].GetComponent<Text>().text = "Score: " + score2;
