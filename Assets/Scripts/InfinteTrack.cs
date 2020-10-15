@@ -4,43 +4,60 @@ using UnityEngine;
 
 public class InfinteTrack : MonoBehaviour
 {
-    public GameObject instance;
+    public GameObject trackInstance;
+    public GameObject speedBoost;
+    public GameObject sides;
     public GameObject obstacle;
     private Vector3 _bounds;
     private float _iNeedAVariable;
     private float _obstacleSpawnDistance;
-    private static float totalObstacles;
-    private float obstacles = 10;
-    private bool testicles = true;
+    private static float _totalObstacles;
+    private int _obstacles = 10;
+    private bool _testicles = true;
 
     private void Start()
     {
-        //totalObstacles = obstacles;
+        //_totalObstacles = obstacles;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (testicles)
+        if (_testicles)
         {
-            var track = Instantiate(instance, new Vector3(0, 0, this.transform.position.z + (instance.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Renderer>().bounds.size.z * 15)), this.transform.rotation);
-            testicles = false;
+            var track = Instantiate(trackInstance, new Vector3(0, 0, this.transform.position.z + (trackInstance.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Renderer>().bounds.size.z * 15)), this.transform.rotation);
+            _testicles = false;
         }
         //obstacles = totalObstacles;
-        _iNeedAVariable = instance.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Renderer>().bounds.size.z * 25;
-        _obstacleSpawnDistance = _iNeedAVariable / obstacles;
+        _iNeedAVariable = trackInstance.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Renderer>().bounds.size.z * 15;
+        _obstacleSpawnDistance = _iNeedAVariable / _obstacles;
         _bounds = this.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<Renderer>().bounds.size;
+
+        SpeedBoostSpawn();
         Obstacles();
     }
 
     private void Obstacles()
     {
         //nya nya object pooling not arsed rn.
-        for (int i = 0; i < obstacles; i++)
+        int totalObstacles = _obstacles;
+        for (int i = 0; i < totalObstacles; i++)
         {
-            Instantiate(obstacle, new Vector3(Random.Range(_bounds.x * 7, -_bounds.x * 7), Random.Range(_bounds.x * 5, -_bounds.x * 5), (this.transform.position.z -( _iNeedAVariable/2)) + (_obstacleSpawnDistance * obstacles)), this.transform.rotation);
-            obstacles--;
+            Instantiate(obstacle, new Vector3(Random.Range(_bounds.x * 7, -_bounds.x * 7), Random.Range(_bounds.x * 5, -_bounds.x * 5), this.transform.position.z + (_obstacleSpawnDistance * _obstacles)), this.transform.rotation);
+            _obstacles--;
         }
-        //totalObstacles++;
+        //_totalObstacles++;
         Destroy(this);
+    }
+
+    private void SpeedBoostSpawn()
+    {
+        int penisSauce = (int)Random.Range(1,3);
+        for (int i = 0; i < penisSauce; i++)
+        {
+            int no = (int)Random.Range(0,5);
+            float Angle = sides.transform.GetChild(no).transform.rotation.eulerAngles.z;
+            GameObject gay = Instantiate(speedBoost, sides.transform.GetChild(no));
+            gay.transform.position = new Vector3(gay.transform.position.x, gay.transform.position.y, gay.transform.position.z + Random.Range(-_iNeedAVariable,_iNeedAVariable));
+        }
     }
 }
