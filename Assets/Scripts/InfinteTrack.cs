@@ -62,6 +62,7 @@ public class InfinteTrack : MonoBehaviour
             float Angle = sides.transform.GetChild(no).transform.rotation.eulerAngles.z;
             GameObject gay = Instantiate(speedBoost, sides.transform.GetChild(no));
             gay.transform.position = new Vector3(gay.transform.position.x, gay.transform.position.y, gay.transform.position.z + Random.Range(-_iNeedAVariable,_iNeedAVariable));
+            gay.GetComponent<ParticleSystem>().Play();
         }
     }
 }
