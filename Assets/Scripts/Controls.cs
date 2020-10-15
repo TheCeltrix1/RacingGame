@@ -262,7 +262,7 @@ public class Controls : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "SpeedBoost") {
-
+            other.gameObject.GetComponent<AudioSource>().Play();
         }
     }
 
