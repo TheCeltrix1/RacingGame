@@ -822,7 +822,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7958aacf98719824cb442320e8f106ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instance: {fileID: 9103016709896091167}
+  trackInstance: {fileID: 9103016709896091167}
+  speedBoost: {fileID: 1418718630863340670, guid: bb78c3143efa36c43bcbfb4010ddd4f2,
+    type: 3}
+  sides: {fileID: 5913173512162909479}
   obstacle: {fileID: 8324469836275090038, guid: 0ef7df1467efa594396ba697a65f1083,
     type: 3}
 --- !u!65 &8691901142478584135
@@ -925,6 +928,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagneticBoost
       objectReference: {fileID: 0}
+    - target: {fileID: 1418718630863340670, guid: bb78c3143efa36c43bcbfb4010ddd4f2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1418718630863340668, guid: bb78c3143efa36c43bcbfb4010ddd4f2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1019,6 +1027,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MagneticBoost (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1418718630863340670, guid: bb78c3143efa36c43bcbfb4010ddd4f2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1418718630863340668, guid: bb78c3143efa36c43bcbfb4010ddd4f2,
         type: 3}

@@ -82,6 +82,7 @@ public class Controls : MonoBehaviour
         MinusY();
 
         //speed update
+        if (!_speedChange && _augmentedForwardVelocity >= forwardVelocity + 0.5f) SpeedLerp();
         UpdateSpeed();
 
         CameraFOV();
@@ -279,7 +280,7 @@ public class Controls : MonoBehaviour
         if (other.tag == "SpeedBoost")
         {
             _speedChange = false;
-            _augmentedForwardVelocity = 0;
+            //_augmentedForwardVelocity = 0;
         }
     }
     #endregion
@@ -317,4 +318,8 @@ public class Controls : MonoBehaviour
 
     }
 
+    private void SpeedLerp()
+    {
+        _augmentedForwardVelocity = Mathf.Lerp(_augmentedForwardVelocity, forwardVelocity, 0.5f);
+    }
 }
