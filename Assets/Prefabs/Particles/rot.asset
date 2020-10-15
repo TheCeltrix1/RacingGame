@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   name: 
-  cardinalStrength: 0.2
-  rotStrength: 0.7
+  cardinalStrength: 0.3
+  rotStrength: 0.8
   invert: 0
