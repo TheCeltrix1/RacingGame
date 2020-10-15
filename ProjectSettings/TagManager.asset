@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SpeedBoost
   - Particle
+  - TypeCanvas
   layers:
   - Default
   - TransparentFX

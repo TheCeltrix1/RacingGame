@@ -55,6 +55,8 @@ public class Controls : MonoBehaviour
     public Particle particle;
     public bool deleteThis;
 
+    public int player;
+
     void Start()
     {
         camPos = this.transform.GetChild(0).gameObject;

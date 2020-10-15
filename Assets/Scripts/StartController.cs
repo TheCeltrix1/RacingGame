@@ -14,6 +14,8 @@ public class StartController : MonoBehaviour
 
     public Sprite[] nums;
 
+    public GameObject[] types;
+
     private void Update()
     {
 
@@ -34,6 +36,62 @@ public class StartController : MonoBehaviour
             begin = true;
             transform.GetChild(0).gameObject.SetActive(false);
         }
+    }
+
+
+    public void Change(int num, int player)
+    {
+
+        if(player == 1)
+        {
+
+            types[0].transform.GetChild(0).gameObject.SetActive(false);
+            types[0].transform.GetChild(1).gameObject.SetActive(false);
+            types[0].transform.GetChild(2).gameObject.SetActive(false);
+            types[0].transform.GetChild(3).gameObject.SetActive(false);
+
+            switch (num)
+            {
+                case 0:
+                    types[0].transform.GetChild(0).gameObject.SetActive(true);
+                    break;
+                case 1:
+                    types[0].transform.GetChild(1).gameObject.SetActive(true);
+                    break;
+                case 2:
+                    types[0].transform.GetChild(2).gameObject.SetActive(true);
+                    break;
+                case 3:
+                    types[0].transform.GetChild(3).gameObject.SetActive(true);
+                    break;
+            }
+        }
+        else if(player == 2)
+        {
+            types[1].transform.GetChild(0).gameObject.SetActive(false);
+            types[1].transform.GetChild(1).gameObject.SetActive(false);
+            types[1].transform.GetChild(2).gameObject.SetActive(false);
+            types[1].transform.GetChild(3).gameObject.SetActive(false);
+
+
+            switch (num)
+            {
+                case 0:
+                    types[1].transform.GetChild(0).gameObject.SetActive(true);
+                    break;
+                case 1:
+                    types[1].transform.GetChild(1).gameObject.SetActive(true);
+                    break;
+                case 2:
+                    types[1].transform.GetChild(2).gameObject.SetActive(true);
+                    break;
+                case 3:
+                    types[1].transform.GetChild(3).gameObject.SetActive(true);
+                    break;
+            }
+        }
+
+    
     }
 
 }

@@ -46,6 +46,7 @@ public class ParticleStability : MonoBehaviour
     {
         gameObject.GetComponent<AudioSource>().Play();
         gameObject.GetComponent<Controls>().particle = partciles[Random.Range(0, 4)];
+        GameObject.FindGameObjectWithTag("TypeCanvas").GetComponent<StartController>().Change(gameObject.GetComponent<Controls>().particle.type, gameObject.GetComponent<Controls>().player);
 
     }
 }
