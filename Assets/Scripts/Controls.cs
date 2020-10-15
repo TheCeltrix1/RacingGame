@@ -321,5 +321,6 @@ public class Controls : MonoBehaviour
     private void SpeedLerp()
     {
         _augmentedForwardVelocity = Mathf.Lerp(_augmentedForwardVelocity, forwardVelocity, 0.5f);
+        //_augmentedForwardVelocity = forwardVelocity;
     }
 }
