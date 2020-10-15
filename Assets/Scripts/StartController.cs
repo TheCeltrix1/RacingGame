@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class StartController : MonoBehaviour
 {
 
-    public Text text;
+    public Image image;
 
-    public float time = 3.4f;
+    public float time = 4.4f;
 
     public static bool begin = false;
+
+    public Sprite[] nums;
 
     private void Update()
     {
@@ -18,7 +20,14 @@ public class StartController : MonoBehaviour
         if (time > 0 && !begin)
         {
             time -= Time.deltaTime;
-            text.text = time.ToString("0");
+
+            if (time > 3.4f) { }
+            else if (time > 2.4f) image.sprite = nums[2];
+            else if (time > 1.4f) image.sprite = nums[1];
+            else if (time > 0.4f) image.sprite = nums[0];
+
+
+            //text.text = time.ToString("0");
         }
         else
         {

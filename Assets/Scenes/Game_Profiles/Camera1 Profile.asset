@@ -33,7 +33,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 3
+    value: 3.04
   threshold:
     overrideState: 1
     value: 0.45
@@ -42,10 +42,10 @@ MonoBehaviour:
     value: 0
   clamp:
     overrideState: 1
-    value: 17.17
+    value: 26.25
   diffusion:
     overrideState: 1
-    value: 8.2
+    value: 8.59
   anamorphicRatio:
     overrideState: 0
     value: -0.64
@@ -126,17 +126,17 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   saturation:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 39
   brightness:
     overrideState: 0
     value: 0
   postExposure:
     overrideState: 1
-    value: 2
+    value: 1.47
   contrast:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 100
   mixerRedOutRedIn:
     overrideState: 0
     value: 100

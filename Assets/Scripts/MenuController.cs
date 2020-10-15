@@ -19,6 +19,6 @@ public class MenuController : MonoBehaviour
 
     public void Game()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("Styled");
     }
 }
