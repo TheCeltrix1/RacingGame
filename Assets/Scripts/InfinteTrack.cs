@@ -42,7 +42,11 @@ public class InfinteTrack : MonoBehaviour
         int totalObstacles = _obstacles;
         for (int i = 0; i < totalObstacles; i++)
         {
-            Instantiate(obstacle, new Vector3(Random.Range(_bounds.x * 7, -_bounds.x * 7), Random.Range(_bounds.x * 5, -_bounds.x * 5), this.transform.position.z + (_obstacleSpawnDistance * _obstacles)), this.transform.rotation);
+            // need to generate a random number for hypotenuse length for a circle. 20 radius for circle
+            float distance = Random.Range(0, 20 - (obstacle.transform.GetComponent<Renderer>().bounds.size.x / 2));
+            float angle = Random.Range(0,360);
+
+            Instantiate(obstacle, new Vector3(Mathf.Sin(angle) * distance, Mathf.Cos(angle) * distance, this.transform.position.z + _iNeedAVariable + (_obstacleSpawnDistance * _obstacles)), this.transform.rotation);
             _obstacles--;
         }
         //_totalObstacles++;
